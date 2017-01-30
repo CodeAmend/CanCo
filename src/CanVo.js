@@ -29,6 +29,13 @@
             return this;
         },
 
+        paintCircle: function(x, y, diameter, color ) {
+            ctx.beginPath();
+            ctx.fillStyle = color;
+            ctx.arc(x, y, diameter / 2, 0, Math.PI * 2);
+            ctx.fill();
+        },
+
         // These methods are added to make canvas and context private.
         getCanvasElement: function() {
             return canvas;

@@ -18,6 +18,13 @@
             canvas.width = width;
             canvas.height = height;
             return this;
+        },
+        // These methods are added to make canvas and context private.
+        getCanvasElement: function() {
+            return canvas;
+        },
+        getCanvasContext: function() {
+            return ctx;
         }
     };
 

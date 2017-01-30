@@ -1,1 +1,3 @@
-console.log("script Javascript test...")
+var cv = new CanVo("canvas_id")
+
+cv.paintBackground("black");

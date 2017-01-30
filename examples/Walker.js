@@ -2,14 +2,17 @@
  * Created by codeamend on 1/30/17.
  */
 
-var board = new CanVo("canvas_id", 400, 200);
+var board = new CanVo("canvas_id", 600, 400);
 board.paintBackground("gray");
+
+// stride perhaps should not be on Walker, instead ConVo should create a grid.
+// Todo: Find a way to use ConVo to auto create a grid system.
 
 var Walker = {
     x: board.width / 2,
     y: board.height / 2,
-    diameter: 5,
-    stride: 10,
+    diameter: 4,
+    stride: 5,
     color: "white",
     move: function() {
         // Random number only -1 0 or 1
@@ -25,5 +28,14 @@ var Walker = {
 
 };
 
-walker = Walker;
-walker.draw();
+var walker = Walker;
+function start() {
+    var framesPerSecond = 30;
+    setInterval(update, 1000 / framesPerSecond);
+}
+function update() {
+    walker.draw();
+    walker.move();
+};
+
+start();

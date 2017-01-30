@@ -2,6 +2,8 @@
 
     // Private variables for ONLY this IIFE context.
     var canvas, ctx;
+    var colSize, rowSize;
+    var cols, rows;
 
     var CanVo = function(id, width, height) {
         canvas = document.getElementById(id);
@@ -9,9 +11,12 @@
 
         this.setCanvasDim(width, height);
 
-        // Public variables
+        // Public variables and initializers
         this.width = canvas.width;
         this.height = canvas.height;
+
+        cols = rows = colSize = rowSize = null;
+
     };
 
     CanVo.prototype =  {
@@ -35,6 +40,20 @@
             ctx.arc(x, y, diameter / 2, 0, Math.PI * 2);
             ctx.fill();
         },
+        setGridSize: function(columnCount, rowCount) {
+            if(Number(columnCount) && columnCount > 0 && columnCount < canvas.width) {
+                colSize = this.width / columnCount;
+                cols = columnCount;
+            } else {
+                throw RangeError(columnCount + " is not valid.");
+            }
+            if(Number(rowCount) && rowCount > 0 && rowCount < canvas.height) {
+                rowSize = this.height / rowCount;
+                rows = rowCount;
+            } else {
+                throw RangeError(rowCount + " is not valid.");
+            }
+        },
 
         // These methods are added to make canvas and context private.
         getCanvasElement: function() {
@@ -42,7 +61,13 @@
         },
         getCanvasContext: function() {
             return ctx;
-        }
+        },
+
+        // Return of Private variables
+        colSize: function() { return colSize },
+        rowSize: function() { return rowSize },
+        cols: function() { return cols },
+        rows: function() { return rows }
     };
 
     global.CanVo = CanVo;

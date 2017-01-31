@@ -3,14 +3,14 @@
  */
 
 var board = new CanVo("canvas_id", 600, 400);
-board.paintBackground("gray");
+board.paintBackground("red");
 
-// stride perhaps should not be on Walker, instead ConVo should create a grid.
-// Todo: Find a way to use ConVo to auto create a grid system.
+var centerOfCanvas = board.createPVector(board.width / 2, board.height / 2);
+
 
 var Walker = {
-    x: board.width / 2,
-    y: board.height / 2,
+    // centerOfCanvas: a PVector created by half of width and height.
+    position: centerOfCanvas,
     diameter: 4,
     stride: 5,
     color: "white",
@@ -19,11 +19,11 @@ var Walker = {
         var moveX = Math.floor(Math.random() * 3) - 1;
         var moveY = Math.floor(Math.random() * 3) - 1;
         // stride * movement = negative zero or positive.
-        this.x += (this.stride  * moveY);
-        this.y += (this.stride  * moveX);
+        this.position.x += (this.stride  * moveY);
+        this.position.y += (this.stride  * moveX);
     },
     draw: function() {
-        board.paintCircle(this.x, this.y, this.diameter, "white");
+        board.paintCircle(this.position.x, this.position.y, this.diameter, "white");
     }
 
 };
@@ -36,6 +36,6 @@ function start() {
 function update() {
     walker.draw();
     walker.move();
-};
+}
 
 start();

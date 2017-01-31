@@ -57,8 +57,16 @@
                 throw RangeError(rowCount + " is not valid row count.");
             }
         },
+
+        // Create a simple Point Vector
         createPVector: function(x, y) {
             return new PVector(x, y)
+        },
+
+        getCenterOfCanvas: function() {
+            var cx = this.width / 2;
+            var cy = this.height / 2;
+            return new PVector(cx, cy);
         },
 
         // These methods are added to make canvas and context private.
@@ -83,7 +91,10 @@
             x = pVector.x + this.x;
             y = pVector.y + this.y;
             return new PVector(x, y);
-        }
+        };
+        this.equals = function(pVector) {
+            return (pVector.x === this.x && pVector.y === this.y);
+        };
     }
 
     global.CanVo = CanVo;

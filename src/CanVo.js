@@ -35,11 +35,16 @@
         },
 
         // An easier way to draw a circle by point, size and color.
-        paintCircle: function(x, y, diameter, color ) {
+        paintCircle: function(x, y, size, color) {
             ctx.beginPath();
             ctx.fillStyle = color;
-            ctx.arc(x, y, diameter / 2, 0, Math.PI * 2);
+            ctx.arc(x, y, size / 2, 0, Math.PI * 2);
             ctx.fill();
+        },
+        // An easier way to draw a rectangle by point, size and color.
+        paintRect: function(x, y, size, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, size, size);
         },
 
         // Users size of element and calculates grid size based off column and row count.
@@ -104,4 +109,3 @@
     global.CanVo = CanVo;
 
 })(window);
-

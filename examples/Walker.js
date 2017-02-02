@@ -13,8 +13,8 @@ window.addEventListener('resize', function(e) {
 var Walker = {
     // centerOfCanvas: a PVector created by half of width and height.
     position: board.getCenterOfCanvas(),
-    diameter: 5,
-    stride: 6,
+    size: 23,
+    stride: 25,
     color: "white",
 
     move: function() {
@@ -22,7 +22,8 @@ var Walker = {
     },
 
     draw: function() {
-        board.paintCircle(this.position.x, this.position.y, this.diameter, this.color);
+        // board.paintCircle(this.position.x, this.position.y, this.size, this.color);
+        board.paintRect(this.position.x, this.position.y, this.size, this.size);
     }
 
 };

@@ -95,8 +95,13 @@
         this.equals = function(pVector) {
             return (pVector.x === this.x && pVector.y === this.y);
         };
+        this.addFunction = function(addFunc) {
+            this.x = addFunc(this.x);
+            this.y = addFunc(this.y);
+        }
     }
 
     global.CanVo = CanVo;
 
 })(window);
+
